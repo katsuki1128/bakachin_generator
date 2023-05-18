@@ -3,7 +3,7 @@
   自分でTwitter用の画像を作れるジェネレーター
 
 ## DEMO
-未デプロイ
+https://katsuki1128.github.io/bakachin_generator/
 
 ## 紹介と使い方
   - 右のカラムと左にカラムに文字を入れ込んで、好きな写真をえらぶ
