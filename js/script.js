@@ -71,7 +71,7 @@ $("#save").on("click", function () {
     localStorage.setItem("memo", json);
 
     // ボタンのHTMLを生成するコード
-    if (clickCount < 10) {
+    if (clickCount < 11) {
         const newButton = $('<input type="button">')
             .attr('value', clickCount)
             .attr('id', 'btn' + clickCount);
