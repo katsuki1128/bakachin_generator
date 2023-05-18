@@ -71,13 +71,17 @@ $("#save").on("click", function () {
     localStorage.setItem("memo", json);
 
     // ボタンのHTMLを生成するコード
-    const newButton = $('<input type="button">')
-        .attr('value', clickCount)
-        .attr('id', 'btn' + clickCount);
+    if (clickCount < 10) {
+        const newButton = $('<input type="button">')
+            .attr('value', clickCount)
+            .attr('id', 'btn' + clickCount);
 
-    $(".call").append(newButton);
 
-    clickCount++;
+        $(newButton).addClass('button-styled');
+        $(".callButton").append(newButton);
+
+        clickCount++;
+    }
 
 });
 
@@ -163,15 +167,7 @@ $("#download_image").click(function () {
         const rightText = $('#right_display').text();
         console.log(leftText, rightText);
 
-        // adobeのウェブフォントサービスTypekitを使うための初期化スクリプト
-        (function (d) {
-            var config = {
-                kitId: 'inu8qmq',
-                scriptTimeout: 3000,
-                async: true
-            },
-                h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
-        })(document);
+        leftTextElement.addClass('display-text vertical-text');
 
         context.font = '16px';
         context.fillStyle = 'white';

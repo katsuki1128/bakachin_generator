@@ -14,9 +14,12 @@ h1 {
     margin: 0 0;
     width: 500px;
     position: absolute;
-    top: -1px;
+    top: 11px;
     left: -42px;
-
+    text-decoration: underline;
+    /* text-decoration-style: solid; */
+    text-decoration-thickness: 1px;
+    text-underline-offset: 10px;
 
 }
 
@@ -32,7 +35,7 @@ header {
 main {
     width: 460px;
     position: absolute;
-    top: 94px;
+    top: 122px;
     left: 72px;
 }
 
@@ -53,23 +56,24 @@ main {
 
 /* 入力フォーム自体 */
 .btn input {
-    margin: 5px;
+    margin: 0px 5px;
     width: 177px;
-    height: 20px;
-    font-size: 1rem;
+    height: 30px;
+    font-size: 1.4rem;
     font-weight: bold;
+    border-radius: 5px;
     box-shadow: 1px 1px 1px 1px #555;
 }
 
-/* 作ったものエリア */
-.call {
-    position: absolute;
-    top: 60px;
-    left: 40px;
-    height: 20px;
+/* 説明文 */
+.explain {
+    margin: 0px 0px 4px 28px;
+    width: 177px;
+    height: 22px;
     font-size: 1rem;
-    font-weight: bold;
 }
+
+
 
 #display {
     font-size: 5rem;
@@ -110,8 +114,8 @@ main {
 
 .select_img {
     position: absolute;
-    margin-top: 24px;
-    margin-left: 5px;
+    top: 75px;
+    left: 5px;
 }
 
 .select {
@@ -124,8 +128,8 @@ main {
 
 .photo {
     position: absolute;
-    margin-top: 101px;
-    margin-left: -226px;
+    top: 150px;
+    left: 5px;
     width: 449px;
     height: 449px;
     /* トリミング */
@@ -137,16 +141,64 @@ ul {
     font-size: 1rem;
 }
 
-.memory {
+/* 作ったものエリア */
+.call {
     position: absolute;
-    top: 614px;
+    top: 608px;
+    left: 10px;
+    height: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+}
+
+/* 一時保存エリアのテキスト */
+.temparea {
+    width: 135px;
+    padding: 0px;
+    margin: 5px;
+}
+
+/* 増えるボタンエリア */
+.callButton {
+    width: 315px;
+    text-align: left;
+}
+
+
+/* 追加されるボタンのスタイル */
+.button-styled {
+    border-radius: 5px;
+    width: 32px;
+    height: 32px;
+    color: #fff;
+    background-color: #d30000;
+}
+
+#memorize {
+    position: absolute;
+    top: 650px;
+    left: 4px;
+    /* padding: 0;
+    margin: 0 0;
+    border-top: 1px solid #000000;
+    display: table;
+    /* 定義 */
+    /* table-layout: fixed;
+    width: 450px; */
+    */
+}
+
+/* .memory {
+    position: absolute;
+    top: 627px;
     left: 4px;
     padding: 0;
     margin: 0 0;
     border-top: 1px solid #000000;
     display: table;
     /* 定義 */
-    table-layout: fixed;
+/* table-layout: fixed;
     width: 450px;
 }
 
@@ -155,7 +207,8 @@ li {
     list-style-type: none;
     border: 1px solid #666;
     background-color: #FFF;
-    display: table-cell;
-    /* 定義 */
-    cursor: pointer;
-}
+    display: table-cell; */
+/* 定義 */
+/* cursor: pointer; */
+/* } */
+*/

@@ -28,21 +28,18 @@
   </header>
 
   <main>
+
+
     <!-- テキスト入力フォーム -->
     <div class="btns">
       <div class="btn">
-        左列を作る(6文字まで)
+        <p class="explain"> 左のことば(6文字まで)</p>
         <input type="text" maxlength="6" id="left_col">
       </div>
       <div class="btn">
-        右列を作る(6文字まで)
+        <p class="explain"> 右のことば(6文字まで)</p>
         <input type="text" maxlength="6" id="right_col">
       </div>
-    </div>
-
-    <!-- 呼び出しボタン -->
-    <div class="call">
-      作ったバカチンガーたち
     </div>
 
     <!-- テキスト表示領域 -->
@@ -67,12 +64,27 @@
         <img src="img/01.JPG" class="photo" alt="">
       </div>
     </div>
+
+    <!-- 呼び出しボタン -->
+    <div class="call">
+      <div class="temparea"> 一時保存エリア</div>
+      <div class="callButton"> </div>
+
+
+    </div>
+
     <!-- 記録ボタン -->
-    <ul class="memory">
+    <!-- <ul class="memory">
       <li id="save">Save</li>
       <li id="download_image">download</li>
       <li id="clear">Clear</li>
-    </ul>
+    </ul> -->
+
+    <div id="memorize">
+      <input type="button" value="一時保存" class="memorybtn" id="save">
+      <input type="button" value="ダウンロード" class="memorybtn" id="download_image">
+      <input type="button" value="クリア" class="memorybtn" id="clear">
+    </div>
   </main>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
