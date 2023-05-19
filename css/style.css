@@ -9,6 +9,16 @@ body {
     position: relative;
 }
 
+#current-time {
+    font-size: 24px;
+    text-align: center;
+    position: absolute;
+    top: -58px;
+    left: 12px;
+    font-weight: bold;
+}
+
+
 h1 {
     font-size: 2.4rem;
     margin: 0 0;
@@ -74,7 +84,17 @@ main {
     font-size: 1rem;
 }
 
-
+/* 画像選択の説明文 */
+.img_explain {
+    margin: 0px 0px 0px 0px;
+    position: absolute;
+    top: 69px;
+    left: -7px;
+    width: 176px;
+    height: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+}
 
 #display {
     font-size: 5rem;
@@ -91,17 +111,18 @@ main {
 
 #right_display {
     position: absolute;
-    top: 21px;
+    top: 112px;
     left: 357px;
-    height: 500px;
+    height: 363px;
 
 }
 
 #left_display {
     position: absolute;
-    top: 57px;
-    left: 8px;
-    height: 500px;
+    top: 105px;
+    left: 42px;
+    height: 431px;
+    width: 123px;
 
 }
 
@@ -116,7 +137,7 @@ main {
 
 .select_img {
     position: absolute;
-    top: 75px;
+    top: 94px;
     left: 5px;
 }
 
@@ -130,7 +151,7 @@ main {
 
 .photo {
     position: absolute;
-    top: 150px;
+    top: 171px;
     left: 5px;
     width: 449px;
     height: 449px;
@@ -139,14 +160,10 @@ main {
 }
 
 
-ul {
-    font-size: 1rem;
-}
-
 /* 作ったものエリア */
 .call {
     position: absolute;
-    top: 608px;
+    top: 630px;
     left: 10px;
     height: 20px;
     font-size: 1rem;
@@ -187,7 +204,7 @@ ul {
 /*呼び出しボタンのあるエリアの下枠  */
 .container {
     position: absolute;
-    top: 608px;
+    top: 630px;
     left: 132.5px;
     margin: 0px;
     display: flex;
@@ -210,37 +227,16 @@ ul {
 
 #memorize {
     position: absolute;
-    top: 650px;
+    top: 671px;
     left: 4px;
-    /* padding: 0;
-    margin: 0 0;
-    border-top: 1px solid #000000;
-    display: table;
-    /* 定義 */
-    /* table-layout: fixed;
-    width: 450px; */
 }
 
-/* .memory {
-    position: absolute;
-    top: 627px;
-    left: 4px;
-    padding: 0;
-    margin: 0 0;
-    border-top: 1px solid #000000;
-    display: table;
-    /* 定義 */
-/* table-layout: fixed;
-    width: 450px;
-}
+/* 保存などのボタンの装飾 */
+.memorybtn {
+    border-radius: 5px;
+    width: 110px;
+    height: 32px;
+    color: #fff;
+    background-color: #d30000;
 
-li {
-    text-align: center;
-    list-style-type: none;
-    border: 1px solid #666;
-    background-color: #FFF;
-    display: table-cell; */
-/* 定義 */
-/* cursor: pointer; */
-/* } */
-*/
+}
