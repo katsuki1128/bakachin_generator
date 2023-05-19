@@ -195,31 +195,31 @@ $(".callButton").on("click", "input[type='button']", function () {
 
 
 $("#download_image").click(function () {
-    // const imgSrc = $('#img_area img').attr('src');
+    const imgSrc = $('#img_area img').attr('src');
     // console.log(imgSrc);
     // 画像をキャンバスに描画
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
 
     const img = new Image();
-    // img.src = imgSrc;
-    img.src = "img/01.JPG";
+    img.src = imgSrc;
+    // img.src = "img/01.JPG";
     img.onload = function () {
         canvas.width = img.width;
         canvas.height = img.height;
         context.drawImage(img, 0, 0);
 
         // // テキストをキャンバスに追加
-        // const leftText = $('#left_display').text();
-        // const rightText = $('#right_display').text();
+        const leftText = $('#left_display').text();
+        const rightText = $('#right_display').text();
         // console.log(leftText, rightText);
 
         // leftTextElement.addClass('display-text vertical-text');
 
-        // context.font = '16px';
-        // context.fillStyle = '#fff';
-        // context.fillText(leftText, 10, 20);
-        // context.fillText(rightText, 10, 40);
+        context.font = '16px';
+        context.fillStyle = '#fff';
+        context.fillText(leftText, 10, 20);
+        context.fillText(rightText, 10, 40);
 
         // キャンバスのデータを画像としてダウンロード
         const link = document.createElement('a');
