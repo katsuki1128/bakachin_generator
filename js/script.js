@@ -35,7 +35,7 @@ $("#right_col, #left_col").on("input", function () {
 })(document);
 
 
-let selectedSrc = "img/_34A2433.JPG";
+let selectedSrc = "img/01.JPG";
 
 // //選択した画像を表示エリアに表示する
 // $(document).ready(function () {
@@ -121,9 +121,9 @@ if (localStorage.getItem("memo")) {
 // 関数内の $(this).val() は、クリックされたボタンの値（N）を取得。
 // そして、alert(btnValue) により、アラートメッセージとして取得した値を表示。
 
-$(".call").on("click", "input[type='button']", function () {
+$(".callButton").on("click", "input[type='button']", function () {
     const btnValue = $(this).val();
-    // alert(btnValue);
+    // console.log(btnValue);
 
     // ローカルストレージからjsonを読み込み、配列に戻す
     const json = localStorage.getItem("memo");
@@ -136,7 +136,7 @@ $(".call").on("click", "input[type='button']", function () {
     $("#left_col").val(data[data.length - btnValue].left_col);
 
     // console.log(data.right_col);
-    console.log(data[data.length - btnValue].temp_img);
+    // console.log(data[data.length - btnValue].temp_img);
 
     // 値を表示する要素にセットする
     $("#right_display").text(data[data.length - btnValue].right_col);
