@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form action="form-wrap">
+        <dl class="form_inner">
+            <!-- 勝敗 -->
+            <dt class="form_title">結果</dt>
+            <dd class="form-item" class="radio">
+                <label for="win" class="pochi"><input type="radio" name="atari" id="win" value="win"
+                        style="transform: scale(3.0);"> 的中</label>
+                <label for="lose" class="pochi"><input type="radio" name="atari" id="lose" value="lose"
+                        style="transform: scale(3.0);"> ハズレ</label>
+
+            </dd>
+
+            <!-- 配当金入力 -->
+            <dt class="form_title">配当金</dt>
+            <dd class="form-item"><input type="text" name="haitokin" id="prize" class="form-parts"> </dd>
+
+            <!-- 一口あたりの金額入力 -->
+            <dt class="form_title">１口購入金額</dt>
+            <dd class="form-item"><input type="text" name="hitokuchi" id="betmoney" class="form-parts"></dd>
+
+            <!-- 口数の入力 -->
+            <dt class="form_title">口数</dt>
+            <dd class="form-item"><input type="text" name="kuchisu" id="betnumber" class="form-parts"></dd>
+
+            <!-- トータル賭け金入力 -->
+            <dt class="form_title">合計金額</dt>
+            <dd class="form-item"><input type="text" name="gokei" id="toatlmoney" class="form-parts"></dd>
+
+            <!-- ゲットした金額 -->
+            <dt class="form_title">払い戻し金</dt>
+            <dd class="form-item"><input type="text" name="harai" id="getmoney" class="form-parts"></dd>
+
+            <!-- 収支金額 -->
+            <dt class="form_title">該当レース収支</dt>
+            <dd class="form-item"><input type="text" name="syushi" id="balance" class="form-parts"></dd>
+
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+            <script>
+
+
+                //  winの時に払戻金に自動に金額が表示
+
+
+                $('input[name="atari"]').on('change', function () {
+
+                    let haitokin = $('#prize').val();
+                    let hitokuchi = $('#betmoney').val();
+
+                    console.log(haitokin, hitokuchi);
+
+                    if ($(this).attr('id') === 'win') {
+                        // 配当金と1口購入金額の値を取得
+                        // let haitokin = parseFloat($('#prize').val());
+                        // let hitokuchi = parseFloat($('#betmoney').val());
+
+                        // 払い戻し金の計算と表示
+                        let harai = haitokin * hitokuchi / 100;
+                        $('#getmoney').val(harai);
+                    } else {
+                        // ハズレの場合は払い戻し金に0を表示
+                        $('#getmoney').val('0');
+                    }
+                });
+
+
+
+            </script>
+</body>
+
+</html>

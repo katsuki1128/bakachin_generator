@@ -214,7 +214,9 @@ $("#download_image").click(function () {
         const rightText = $('#right_display').text();
         // console.log(leftText, rightText);
 
-        // leftTextElement.addClass('display-text vertical-text');
+        $(leftText).addClass('vertical-text');
+
+        // $(newButton).addClass("button-styled");
 
         context.font = '16px';
         context.fillStyle = '#fff';
