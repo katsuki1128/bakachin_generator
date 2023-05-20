@@ -240,3 +240,8 @@ main {
     background-color: #d30000;
 
 }
+
+.memorybtn[disabled] {
+    background-color: #ccc;
+    color: #888;
+}
