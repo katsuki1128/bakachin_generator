@@ -27,11 +27,11 @@ $("#right_col, #left_col").on("input", function () {
 // adobeのウェブフォントサービスTypekitを使うための初期化スクリプト
 (function (d) {
     var config = {
-        kitId: 'inu8qmq',
+        kitId: "inu8qmq",
         scriptTimeout: 3000,
         async: true
     },
-        h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
+        h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = "https://use.typekit.net/" + config.kitId + ".js"; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
 })(document);
 
 
@@ -40,17 +40,19 @@ let selectedSrc = "img/01.JPG";
 // //選択した画像を表示エリアに表示する
 // $(document).ready(function () {
 // select_area内のimg要素がクリックされたときの処理
-$('.select').click(function () {
+$(".select").click(function () {
     // クリックされた写真のsrc属性値を取得
-    selectedSrc = $(this).attr('src');
-    console.log(selectedSrc);
+    selectedSrc = $(this).attr("src");
+    // console.log(selectedSrc);
     // img_area内のimg要素のsrc属性値を設定
-    $('#img_area img').attr('src', selectedSrc);
+    $("#img_area img").attr("src", selectedSrc);
     // });
 });
 
 // saveボタンを押した回数を定義
 let clickCount = 1;
+let newButton = "";
+let createdButtons = [];
 
 // データを保存する
 $("#save").on("click", function () {
@@ -72,24 +74,69 @@ $("#save").on("click", function () {
 
     // ボタンのHTMLを生成するコード
     if (clickCount < 11) {
-        const newButton = $('<input type="button">')
-            .attr('value', clickCount)
-            .attr('id', 'btn' + clickCount);
+        newButton = $('<input type="button">')
+            .attr("value", clickCount)
+            .attr("id", "btn" + clickCount);
 
 
-        $(newButton).addClass('button-styled');
+        $(newButton).addClass("button-styled");
         $(".callButton").append(newButton);
 
+        // できたnewButtonをcreatedButtons配列に要素として追加
+        createdButtons.push(newButton);
+
+        // クリックした数を足し上げていく
         clickCount++;
     }
+    console.log(createdButtons);
+    console.log(createdButtons.length);
 
 });
+// できた呼び出しボタンを溜めておく
+
 
 // データを削除する
 $("#clear").on("click", function () {
+    // ローカルストレージを消す
     localStorage.removeItem("memo");
+
+    // 入力フォームから削除
     $("#right_col").val("");
     $("#left_col").val("");
+
+    // 画像上のテキストを削除
+    $("#right_display").text("");
+    $("#left_display").text("");
+
+    //一時保存ボタンを消す関数を宣言
+    removeAllButtons();
+
+    // 一時保存エリアのボタンを消す
+    // createdButtons[0].remove();
+    // createdButtons[2].remove();
+
+    function removeAllButtons() {
+        for (let i = 0; i < createdButtons.length; i++) {
+            createdButtons[i].remove();
+        }
+        createdButton = [];
+    };
+
+    clickCount = 1;
+
+    // data,history配列を空の配列で初期化
+    data = {
+        right_col: "",
+        left_col: "",
+        temp_img: "",
+    };
+
+    history = [];
+
+    // console.log(last_right_col);
+    // last_right_col = "";
+    // last_left_col = "";
+
 });
 
 //データを取得する 再読み込み時にも最後に記入したものが表示される
@@ -141,43 +188,43 @@ $(".callButton").on("click", "input[type='button']", function () {
     // 値を表示する要素にセットする
     $("#right_display").text(data[data.length - btnValue].right_col);
     $("#left_display").text(data[data.length - btnValue].left_col);
-    $('#img_area img').attr('src', data[data.length - btnValue].temp_img);
+    $("#img_area img").attr("src", data[data.length - btnValue].temp_img);
 
 });
 
 
 
 $("#download_image").click(function () {
-
-    const imgSrc = $('#img_area img').attr('src');
-    console.log(imgSrc);
+    // const imgSrc = $('#img_area img').attr('src');
+    // console.log(imgSrc);
     // 画像をキャンバスに描画
     const canvas = document.createElement('canvas');
     const context = canvas.getContext('2d');
 
     const img = new Image();
-    img.src = imgSrc;
+    // img.src = imgSrc;
+    img.src = "img/01.JPG";
     img.onload = function () {
         canvas.width = img.width;
         canvas.height = img.height;
         context.drawImage(img, 0, 0);
 
-        // テキストをキャンバスに追加
-        const leftText = $('#left_display').text();
-        const rightText = $('#right_display').text();
-        console.log(leftText, rightText);
+        // // テキストをキャンバスに追加
+        // const leftText = $('#left_display').text();
+        // const rightText = $('#right_display').text();
+        // console.log(leftText, rightText);
 
-        leftTextElement.addClass('display-text vertical-text');
+        // leftTextElement.addClass('display-text vertical-text');
 
-        context.font = '16px';
-        context.fillStyle = 'white';
-        context.fillText(leftText, 10, 20);
-        context.fillText(rightText, 10, 40);
+        // context.font = '16px';
+        // context.fillStyle = '#fff';
+        // context.fillText(leftText, 10, 20);
+        // context.fillText(rightText, 10, 40);
 
         // キャンバスのデータを画像としてダウンロード
         const link = document.createElement('a');
-        link.href = canvas.toDataURL('image/png');
-        link.download = 'combined_image.png';
+        link.href = canvas.toDataURL('image/jpeg');
+        link.download = 'combined_image.jpg';
         link.click();
     };
 });
