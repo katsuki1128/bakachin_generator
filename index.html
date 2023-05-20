@@ -12,18 +12,22 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="js/script.js" defer></script>
 
-
-
 </head>
 
 <body>
-
-  <div class="bg">
-    <div class="bg">
-    </div>
-  </div>
   <header>
-    <!-- <p>これであなたもバカチンガー！</p> -->
+    <!-- 実際の時間を表示 -->
+    <div>
+      <p id="current-time"></p>
+    </div>
+
+    <!-- 背景を設定 -->
+    <div class="bg">
+      <div class="bg">
+      </div>
+    </div>
+
+    <!-- タイトル -->
     <h1>バカチンジェネレーター</h1>
   </header>
 
@@ -51,6 +55,7 @@
     <!-- 画像選択 -->
 
     <div>
+      <p class="img_explain"> ▼ 画像をえらぼう！</p>
       <div id="select_area" class="select_img">
         <img src="img/01.JPG" class="select" alt="">
         <img src="img/02.JPG" class="select" alt="">
@@ -88,6 +93,7 @@
     <div id="memorize">
       <input type="button" value="一時保存" class="memorybtn" id="save">
       <input type="button" value="ダウンロード" class="memorybtn" id="download_image">
+      <input type="button" value="ツイート" class="memorybtn" id="tweet">
       <input type="button" value="クリア" class="memorybtn" id="clear">
     </div>
   </main>

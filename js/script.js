@@ -1,3 +1,19 @@
+// 現在の時間を取得
+function getCurrentTime() {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    return `${hours}:${minutes}`;
+}
+
+// 時間を表示
+function updateTime() {
+    const currentTimeElement = $('#current-time');
+    currentTimeElement.text(getCurrentTime());
+}
+
+// 1秒ごとに時間を更新
+setInterval(updateTime, 1000);
 
 const history = [];
 
@@ -88,8 +104,8 @@ $("#save").on("click", function () {
         // クリックした数を足し上げていく
         clickCount++;
     }
-    console.log(createdButtons);
-    console.log(createdButtons.length);
+    // console.log(createdButtons);
+    // console.log(createdButtons.length);
 
 });
 // できた呼び出しボタンを溜めておく
@@ -212,11 +228,24 @@ $("#download_image").click(function () {
         // // テキストをキャンバスに追加
         const leftText = $('#left_display').text();
         const rightText = $('#right_display').text();
-        // console.log(leftText, rightText);
+        console.log(leftText, rightText);
 
         $(leftText).addClass('vertical-text');
+        // const leftTextCSS = window.getComputedStyle(leftText[0]);
+        // console.log(leftTextCSS);
+
+        // console.log(leftText., rightText);
 
         // $(newButton).addClass("button-styled");
+
+        // newButton = $('<input type="button">')
+        //     .attr("value", clickCount)
+        //     .attr("id", "btn" + clickCount);
+
+
+        // $(newButton).addClass("button-styled");
+        // $(".callButton").append(newButton);
+
 
         context.font = '16px';
         context.fillStyle = '#fff';
@@ -225,8 +254,8 @@ $("#download_image").click(function () {
 
         // キャンバスのデータを画像としてダウンロード
         const link = document.createElement('a');
-        link.href = canvas.toDataURL('image/jpeg');
-        link.download = 'combined_image.jpg';
+        link.href = canvas.toDataURL('image/png');
+        link.download = 'combined_image.png';
         link.click();
     };
 });
