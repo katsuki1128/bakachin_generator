@@ -236,7 +236,7 @@ $("#download_image").click(function () {
 
 
         // テキストのフォントと色
-        ctx.font = '60px "toppan-bunkyu-midashi-min-st", serif';
+        ctx.font = '72px "toppan-bunkyu-midashi-min-st", serif';
         ctx.fillStyle = '#fff';
 
         // テキストの影を設定
@@ -267,7 +267,7 @@ $("#download_image").click(function () {
             ctx.save();
             ctx.translate(x, y);
             // ctx.rotate(-Math.PI / 3);
-            ctx.fillText(char, 300, -100);
+            ctx.fillText(char, 300, 0);
             ctx.restore();
             y += lineHeight;
         }
