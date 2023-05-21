@@ -245,7 +245,7 @@ $("#download_image").click(function () {
         ctx.shadowBlur = shadowBlurValue;
         ctx.shadowColor = shadowColorValue;
 
-        const lineHeight = 60;
+        const lineHeight = 70;
         const x = 50;
 
         // 左側のテキストを縦書きで描画
@@ -267,7 +267,7 @@ $("#download_image").click(function () {
             ctx.save();
             ctx.translate(x, y);
             // ctx.rotate(-Math.PI / 3);
-            ctx.fillText(char, 300, -400);
+            ctx.fillText(char, 300, -200);
             ctx.restore();
             y += lineHeight;
         }
