@@ -254,7 +254,7 @@ $("#download_image").click(function () {
             const char = leftText.charAt(i);
             ctx.save();
             ctx.translate(x, y);
-            ctx.rotate(-Math.PI / 2);
+            // ctx.rotate(-Math.PI / 2);
             ctx.fillText(char, 0, 0);
             ctx.restore();
             y += lineHeight;
@@ -266,7 +266,7 @@ $("#download_image").click(function () {
             const char = rightText.charAt(i);
             ctx.save();
             ctx.translate(x, y);
-            ctx.rotate(-Math.PI / 2);
+            ctx.rotate(-Math.PI / 3);
             ctx.fillText(char, 0, 0);
             ctx.restore();
             y += lineHeight;
