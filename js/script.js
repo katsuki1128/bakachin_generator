@@ -226,10 +226,10 @@ $("#download_image").click(function () {
         ctx.drawImage(img, 0, 0);
 
         // 縦書きを追加
-        $('#left_display').addClass('vertical-text');
-        $('#right_display').addClass('vertical-text');
+        // $('#left_display').addClass('vertical-text');
+        // $('#right_display').addClass('vertical-text');
 
-        // // テキストをキャンバスに追加
+        // テキストをキャンバスに追加
         const leftText = $('#left_display').text();
         const rightText = $('#right_display').text();
         console.log(leftText, rightText);
@@ -245,11 +245,37 @@ $("#download_image").click(function () {
         ctx.shadowBlur = shadowBlurValue;
         ctx.shadowColor = shadowColorValue;
 
+        const lineHeight = 70;
+        const x = 50;
 
+        // 左側のテキストを縦書きで描画
+        let y = 200;
+        for (let i = 0; i < leftText.length; i++) {
+            const char = leftText.charAt(i);
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(-Math.PI / 2);
+            ctx.fillText(char, 0, 0);
+            ctx.restore();
+            y += lineHeight;
+        }
+
+        // 右側のテキストを縦書きで描画
+        y = 400;
+        for (let i = 0; i < rightText.length; i++) {
+            const char = rightText.charAt(i);
+            ctx.save();
+            ctx.translate(x, y);
+            ctx.rotate(-Math.PI / 2);
+            ctx.fillText(char, 0, 0);
+            ctx.restore();
+            y += lineHeight;
+        }
 
         // テキストを描画
-        ctx.fillText(leftText, 50, 200);
-        ctx.fillText(rightText, 50, 400);
+        // ctx.fillText(leftText, 50, 200);
+        // ctx.fillText(rightText, 50, 400);
+
 
         // テキストの描画後に影を無効化
         ctx.shadowBlur = 0;
@@ -257,8 +283,10 @@ $("#download_image").click(function () {
 
         // キャンバスのデータを画像としてダウンロード
         const link = document.createElement('a');
+
         link.href = canvas.toDataURL('image/png');
         link.download = 'combined_image.png';
+
         link.click();
     };
 });
