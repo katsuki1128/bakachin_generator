@@ -245,7 +245,7 @@ $("#download_image").click(function () {
         ctx.shadowBlur = shadowBlurValue;
         ctx.shadowColor = shadowColorValue;
 
-        const lineHeight = 30;
+        const lineHeight = 50;
         const x = 50;
 
         // 左側のテキストを縦書きで描画
@@ -255,7 +255,7 @@ $("#download_image").click(function () {
             ctx.save();
             ctx.translate(x, y);
             // ctx.rotate(-Math.PI / 2);
-            ctx.fillText(char, 0, 0);
+            ctx.fillText(char, 0, -100);
             ctx.restore();
             y += lineHeight;
         }
@@ -267,7 +267,7 @@ $("#download_image").click(function () {
             ctx.save();
             ctx.translate(x, y);
             // ctx.rotate(-Math.PI / 3);
-            ctx.fillText(char, 0, 0);
+            ctx.fillText(char, 300, -100);
             ctx.restore();
             y += lineHeight;
         }
