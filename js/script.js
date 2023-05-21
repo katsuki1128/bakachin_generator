@@ -267,7 +267,7 @@ $("#download_image").click(function () {
             ctx.save();
             ctx.translate(x, y);
             // ctx.rotate(-Math.PI / 3);
-            ctx.fillText(char, 300, -150);
+            ctx.fillText(char, 300, -50);
             ctx.restore();
             y += lineHeight;
         }
