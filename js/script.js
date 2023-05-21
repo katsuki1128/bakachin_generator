@@ -209,85 +209,96 @@ $(".callButton").on("click", "input[type='button']", function () {
 });
 
 
-
 $("#download_image").click(function () {
-    const imgSrc = $('#img_area img').attr('src');
-    // console.log(imgSrc);
-    // 画像をキャンバスに描画
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-
-    const img = new Image();
-    img.src = imgSrc;
-
-    img.onload = function () {
-        canvas.width = img.width;
-        canvas.height = img.height;
-        ctx.drawImage(img, 0, 0);
-
-        // 縦書きを追加
-        // $('#left_display').addClass('vertical-text');
-        // $('#right_display').addClass('vertical-text');
-
-        // テキストをキャンバスに追加
-        const leftText = $('#left_display').text();
-        const rightText = $('#right_display').text();
-        console.log(leftText, rightText);
-
-
-        // テキストのフォントと色
-        ctx.font = '80px "toppan-bunkyu-midashi-min-st", serif';
-        ctx.fillStyle = '#fff';
-
-        // テキストの影を設定
-        const shadowBlurValue = 20;
-        const shadowColorValue = '#000';
-        ctx.shadowBlur = shadowBlurValue;
-        ctx.shadowColor = shadowColorValue;
-
-        const lineHeight = 80;
-        const x = 50;
-
-        // 左側のテキストを縦書きで描画
-        let y = 200;
-        for (let i = 0; i < leftText.length; i++) {
-            const char = leftText.charAt(i);
-            ctx.save();
-            ctx.translate(x, y);
-            // ctx.rotate(-Math.PI / 2);
-            ctx.fillText(char, 0, -100);
-            ctx.restore();
-            y += lineHeight;
-        }
-
-        // 右側のテキストを縦書きで描画
-        y = 400;
-        for (let i = 0; i < rightText.length; i++) {
-            const char = rightText.charAt(i);
-            ctx.save();
-            ctx.translate(x, y);
-            // ctx.rotate(-Math.PI / 3);
-            ctx.fillText(char, 300, -10);
-            ctx.restore();
-            y += lineHeight;
-        }
-
-        // テキストを描画
-        // ctx.fillText(leftText, 50, 200);
-        // ctx.fillText(rightText, 50, 400);
-
-
-        // テキストの描画後に影を無効化
-        ctx.shadowBlur = 0;
-        ctx.shadowColor = 'transparent';
-
-        // キャンバスのデータを画像としてダウンロード
-        const link = document.createElement('a');
-
-        link.href = canvas.toDataURL('image/png');
-        link.download = 'combined_image.png';
-
+    html2canvas(document.body, {
+        useCORS: true,
+        allowTaint: true,
+    }).then(function (canvas) {
+        // Canvasを画像としてダウンロード
+        let link = document.createElement('a');
+        link.href = canvas.toDataURL('image/jpeg');
+        link.download = 'screenshot.jpg';
         link.click();
-    };
+    });
 });
+
+//     const imgSrc = $('#img_area img').attr('src');
+//     // console.log(imgSrc);
+//     // 画像をキャンバスに描画
+//     const canvas = document.createElement('canvas');
+//     const ctx = canvas.getContext('2d');
+
+//     const img = new Image();
+//     img.src = imgSrc;
+
+//     img.onload = function () {
+//         canvas.width = img.width;
+//         canvas.height = img.height;
+//         ctx.drawImage(img, 0, 0);
+
+//         // 縦書きを追加
+//         // $('#left_display').addClass('vertical-text');
+//         // $('#right_display').addClass('vertical-text');
+
+//         // テキストをキャンバスに追加
+//         const leftText = $('#left_display').text();
+//         const rightText = $('#right_display').text();
+//         console.log(leftText, rightText);
+
+
+//         // テキストのフォントと色
+//         ctx.font = '80px "toppan-bunkyu-midashi-min-st", serif';
+//         ctx.fillStyle = '#fff';
+
+//         // テキストの影を設定
+//         const shadowBlurValue = 20;
+//         const shadowColorValue = '#000';
+//         ctx.shadowBlur = shadowBlurValue;
+//         ctx.shadowColor = shadowColorValue;
+
+//         const lineHeight = 80;
+//         const x = 50;
+
+//         // 左側のテキストを縦書きで描画
+//         let y = 200;
+//         for (let i = 0; i < leftText.length; i++) {
+//             const char = leftText.charAt(i);
+//             ctx.save();
+//             ctx.translate(x, y);
+//             // ctx.rotate(-Math.PI / 2);
+//             ctx.fillText(char, 0, -100);
+//             ctx.restore();
+//             y += lineHeight;
+//         }
+
+//         // 右側のテキストを縦書きで描画
+//         y = 400;
+//         for (let i = 0; i < rightText.length; i++) {
+//             const char = rightText.charAt(i);
+//             ctx.save();
+//             ctx.translate(x, y);
+//             // ctx.rotate(-Math.PI / 3);
+//             ctx.fillText(char, 300, -10);
+//             ctx.restore();
+//             y += lineHeight;
+//         }
+
+//         // テキストを描画
+//         // ctx.fillText(leftText, 50, 200);
+//         // ctx.fillText(rightText, 50, 400);
+
+
+//         // テキストの描画後に影を無効化
+//         ctx.shadowBlur = 0;
+//         ctx.shadowColor = 'transparent';
+
+//         // キャンバスのデータを画像としてダウンロード
+//         const link = document.createElement('a');
+
+//         link.href = canvas.toDataURL('image/png');
+//         link.download = 'combined_image.png';
+
+//         link.click();
+//     };
+// });
 
