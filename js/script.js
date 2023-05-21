@@ -231,8 +231,11 @@ $("#download_image").click(function () {
         console.log(leftText, rightText);
 
 
+        // テキストのフォントと色
         ctx.font = '60px "toppan-bunkyu-midashi-min-st", serif';
         ctx.fillStyle = '#fff';
+        // テキストの影を設定
+        ctx.textShadow = '0px 0px 10px #000, 0px 0px 10px #000, 0px 0px 10px #000';
         $(leftText).addClass('vertical-text');
         ctx.fillText(leftText, 50, 200);
         ctx.fillText(rightText, 50, 400);
