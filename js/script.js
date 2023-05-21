@@ -225,6 +225,10 @@ $("#download_image").click(function () {
         canvas.height = img.height;
         ctx.drawImage(img, 0, 0);
 
+        // 縦書きを追加
+        $('#left_display').addClass('vertical-text');
+        $('#right_display').addClass('vertical-text');
+
         // // テキストをキャンバスに追加
         const leftText = $('#left_display').text();
         const rightText = $('#right_display').text();
@@ -241,8 +245,7 @@ $("#download_image").click(function () {
         ctx.shadowBlur = shadowBlurValue;
         ctx.shadowColor = shadowColorValue;
 
-        $('#left_display').addClass('vertical-text');
-        $('#right_display').addClass('vertical-text');
+
 
         // テキストを描画
         ctx.fillText(leftText, 50, 200);
