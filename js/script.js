@@ -232,19 +232,8 @@ $("#download_image").click(function () {
         // // テキストをキャンバスに追加
         const leftText = $('#left_display').text();
         const rightText = $('#right_display').text();
-        // console.log(leftText, rightText);
+        console.log(leftText, rightText);
 
-        // 縦書きのテキストを生成する関数
-        function createVerticalText(text, x, y) {
-            const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="60" height="500">
-                <text x="${x}" y="${y}" font-size="60" font-family="toppan-bunkyu-midashi-min-st" fill="#fff">${text}</text>
-            </svg>`;
-
-            const svgData = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
-            const svgImage = new Image();
-            svgImage.src = svgData;
-            ctx.drawImage(svgImage, 0, 0);
-        }
 
         // テキストのフォントと色
         ctx.font = '60px "toppan-bunkyu-midashi-min-st", serif';
@@ -256,14 +245,11 @@ $("#download_image").click(function () {
         ctx.shadowBlur = shadowBlurValue;
         ctx.shadowColor = shadowColorValue;
 
-        // 縦書きのテキストをキャンバスに描画
-        createVerticalText(leftText, 50, 200);
-        createVerticalText(rightText, 50, 400);
 
 
-        // // テキストを描画
-        // ctx.fillText(leftText, 50, 200);
-        // ctx.fillText(rightText, 50, 400);
+        // テキストを描画
+        ctx.fillText(leftText, 50, 200);
+        ctx.fillText(rightText, 50, 400);
 
         // テキストの描画後に影を無効化
         ctx.shadowBlur = 0;
