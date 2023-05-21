@@ -215,7 +215,7 @@ $("#download_image").click(function () {
     // console.log(imgSrc);
     // 画像をキャンバスに描画
     const canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d');
 
     const img = new Image();
     img.src = imgSrc;
@@ -223,34 +223,19 @@ $("#download_image").click(function () {
     img.onload = function () {
         canvas.width = img.width;
         canvas.height = img.height;
-        context.drawImage(img, 0, 0);
+        ctx.drawImage(img, 0, 0);
 
         // // テキストをキャンバスに追加
         const leftText = $('#left_display').text();
         const rightText = $('#right_display').text();
         console.log(leftText, rightText);
 
+
+        ctx.font = '60px "toppan-bunkyu-midashi-min-st", serif';
+        ctx.fillStyle = '#fff';
         $(leftText).addClass('vertical-text');
-        // const leftTextCSS = window.getComputedStyle(leftText[0]);
-        // console.log(leftTextCSS);
-
-        // console.log(leftText., rightText);
-
-        // $(newButton).addClass("button-styled");
-
-        // newButton = $('<input type="button">')
-        //     .attr("value", clickCount)
-        //     .attr("id", "btn" + clickCount);
-
-
-        // $(newButton).addClass("button-styled");
-        // $(".callButton").append(newButton);
-
-
-        context.font = '16px';
-        context.fillStyle = '#fff';
-        context.fillText(leftText, 10, 20);
-        context.fillText(rightText, 10, 40);
+        ctx.fillText(leftText, 50, 200);
+        ctx.fillText(rightText, 50, 400);
 
         // キャンバスのデータを画像としてダウンロード
         const link = document.createElement('a');
