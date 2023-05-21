@@ -234,11 +234,23 @@ $("#download_image").click(function () {
         // テキストのフォントと色
         ctx.font = '60px "toppan-bunkyu-midashi-min-st", serif';
         ctx.fillStyle = '#fff';
+
         // テキストの影を設定
-        ctx.textShadow = '0px 0px 10px #000, 0px 0px 10px #000, 0px 0px 10px #000';
+        const shadowBlurValue = 10;
+        const shadowColorValue = '#000';
+        ctx.shadowBlur = shadowBlurValue;
+        ctx.shadowColor = shadowColorValue;
+
+
         $(leftText).addClass('vertical-text');
+
+        // テキストを描画
         ctx.fillText(leftText, 50, 200);
         ctx.fillText(rightText, 50, 400);
+
+        // テキストの描画後に影を無効化
+        ctx.shadowBlur = 0;
+        ctx.shadowColor = 'transparent';
 
         // キャンバスのデータを画像としてダウンロード
         const link = document.createElement('a');
