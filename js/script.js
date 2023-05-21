@@ -236,7 +236,7 @@ $("#download_image").click(function () {
         ctx.fillStyle = '#fff';
 
         // テキストの影を設定
-        const shadowBlurValue = 10;
+        const shadowBlurValue = 20;
         const shadowColorValue = '#000';
         ctx.shadowBlur = shadowBlurValue;
         ctx.shadowColor = shadowColorValue;
