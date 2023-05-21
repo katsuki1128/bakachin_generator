@@ -236,21 +236,58 @@ $("#download_image").click(function () {
         ctx.fillStyle = '#fff';
 
         // テキストの影を設定
-        const shadowBlurValue = 20;
-        const shadowColorValue = '#000';
-        ctx.shadowBlur = shadowBlurValue;
-        ctx.shadowColor = shadowColorValue;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = '#000';
 
+        // 左側のテキストを縦書きで描画
+        const leftTextX = 50;
+        const leftTextY = 200;
+        const leftTextCharacters = leftText.split(''); // 文字列を一文字ずつ分割
+        const leftTextLineHeight = parseInt(ctx.font) * 1.2; // 行の高さ（フォントサイズの1.2倍）
+        leftTextCharacters.forEach((character, index) => {
+            const offsetX = leftTextX + index * 5; // 文字の間隔（適宜調整）
+            const offsetY = leftTextY + index * leftTextLineHeight; // 文字の縦方向の間隔（適宜調整）
+            ctx.save(); // 現在の描画スタイルを保存
+            ctx.translate(offsetX, offsetY); // 描画位置を移動
+            ctx.rotate(-Math.PI / 2); // 描画を反時計回りに90度回転
+            ctx.fillText(character, 0, 0); // テキストを描画
+            ctx.restore(); // 描画スタイルを復元
+        });
 
-        $(leftText).addClass('vertical-text');
+        // 右側のテキストを縦書きで描画
+        const rightTextX = 50;
+        const rightTextY = 400;
+        const rightTextCharacters = rightText.split(''); // 文字列を一文字ずつ分割
+        const rightTextLineHeight = parseInt(ctx.font) * 1.2; // 行の高さ（フォントサイズの1.2倍）
+        rightTextCharacters.forEach((character, index) => {
+            const offsetX = rightTextX + index * 5; // 文字の間隔（適宜調整）
+            const offsetY = rightTextY + index * rightTextLineHeight; // 文字の縦方向の間隔（適宜調整）
+            ctx.save(); // 現在の描画スタイルを保存
+            ctx.translate(offsetX, offsetY); // 描画位置を移動
+            ctx.rotate(-Math.PI / 2); // 描画を反時計回りに90度回転
+            ctx.fillText(character, 0, 0); // テキストを描画
+            ctx.restore(); // 描画スタイルを復元
+        });
 
-        // テキストを描画
-        ctx.fillText(leftText, 50, 200);
-        ctx.fillText(rightText, 50, 400);
-
-        // テキストの描画後に影を無効化
+        // テキストの影を無効化
         ctx.shadowBlur = 0;
         ctx.shadowColor = 'transparent';
+        // // テキストの影を設定
+        // const shadowBlurValue = 20;
+        // const shadowColorValue = '#000';
+        // ctx.shadowBlur = shadowBlurValue;
+        // ctx.shadowColor = shadowColorValue;
+
+
+        // $(leftText).addClass('vertical-text');
+
+        // // テキストを描画
+        // ctx.fillText(leftText, 50, 200);
+        // ctx.fillText(rightText, 50, 400);
+
+        // // テキストの描画後に影を無効化
+        // ctx.shadowBlur = 0;
+        // ctx.shadowColor = 'transparent';
 
         // キャンバスのデータを画像としてダウンロード
         const link = document.createElement('a');
