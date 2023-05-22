@@ -210,28 +210,11 @@ $(".callButton").on("click", "input[type='button']", function () {
 
 
 $("#download_image").click(function () {
-    // 描画するエリアの要素を取得
-    const targetElement = $('#target_area')[0];
 
-    // エリアの位置とサイズを計算
-    const x = -50;
-    const y = -50;
-    const width = 400;
-    const height = 400;
-
-    const areaLeft = targetElement.offsetLeft + x;
-    const areaTop = targetElement.offsetTop + y;
-    const areaWidth = width;
-    const areaHeight = height;
 
     html2canvas(document.body, {
         useCORS: true,
         allowTaint: true,
-        x: areaLeft,
-        y: areaTop,
-        width: areaWidth,
-        height: areaHeight
-
     }).then(function (canvas) {
         // Canvasを画像としてダウンロード
         let link = document.createElement('a');
